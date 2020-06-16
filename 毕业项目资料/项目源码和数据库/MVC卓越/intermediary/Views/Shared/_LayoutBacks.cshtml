@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>后台</title>
+
+    @*<link href="~/Content/backt/index_style.css" rel="stylesheet" />
+        <script src="~/Scripts/backt/jquery.min.js"></script>*@
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style >
+        body{
+            margin:0px;
+            padding:0px;
+        }
+        a{
+            color:black;
+            text-decoration:none;
+        }
+        .card-body a{
+            padding-left:50px;
+        }
+    </style>
+</head>
+<body style="background-image: url('../../Content/image/1.jpg');background-repeat:no-repeat;background-size:100% 100%">
+    <!-----HEADER STAR----->
+    @*<div class="div" style="position:fixed">
+            <div class="header" id="demo">
+                <div class="top_logo"></div>
+
+
+                <div class="canvaszz"> </div>
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>*@
+    <div style="height:80px">欢迎使用</div>
+    <div class="row" style="border:5px solid #8C7A8A">
+        <div class="col-lg-4" style="border:1px solid #8C7A8A">
+            <div class="accordion" id="accordionExample" style="height:800px">
+                <div class="c">
+                    @*改类名透明*@
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            出租房屋信息管理
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <a href=""  class="btn btn-block text-left">显示全部信息</a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="btn btn-block text-left">查询信息</a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="btn btn-block text-left">插入信息</a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="btn btn-block text-left">修改信息</a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="btn btn-block text-left">合租信息添加</a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="btn btn-block text-left">合租信息查询</a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="btn btn-block text-left">合租信息删除</a>
+                    </div>
+                </div>
+                <div class="c">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#headingTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                出售房屋信息管理
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="headingTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <a href="" class="btn btn-block text-left">显示全部信息</a>
+                        </div>
+                        <div class="card-body">
+                            <a href="" class="btn btn-block text-left">查询信息</a>
+                        </div>
+                        <div class="card-body">
+                            <a href="" class="btn btn-block text-left">插入信息</a>
+                        </div>
+                        <div class="card-body">
+                            <a href="" class="btn btn-block text-left">修改信息</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="c">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#headingThree" aria-expanded="false" aria-controls="collapseThree">
+                                求租信息管理
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="headingThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <a href="" class="btn btn-block text-left">显示全部信息</a>
+                        </div>
+                        <div class="card-body">
+                            <a href="" class="btn btn-block text-left">记录信息</a>
+                        </div>
+                        <div class="card-body">
+                            <a href="" class="btn btn-block text-left">修改信息</a>
+                        </div>
+                    </div>
+                    <div class="c">
+                        <div class="card-header" id="headingFour">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#headingFour" aria-expanded="false" aria-controls="collapseThree">
+                                    求购信息管理
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="headingFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <a href="" class="btn btn-block text-left">显示全部信息</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="" class="btn btn-block text-left">记录信息</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="" class="btn btn-block text-left">修改信息</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+           </div>
+        <div class="col-lg-8">@RenderBody()</div>
+    </div>
+
+    <!-----HEADER END----->
+    <!--用来解决视频右键菜单，用于视频上面的遮罩层 START-->
+    @*<div class="videozz"></div>*@
+    <!--用来解决视频右键菜单，用于视频上面的遮罩层 END-->
+    <!--音乐 START-->
+    @*<audio controls="true" autoplay="autoplay" class="audio">
+            <source src="css/Music.mp3" type="audio/mp3">
+            <source src="css/Music.ogg" type="audio/ogg">
+            <source src="css/Music.aac" type="audio/mp4">
+        </audio>*@
+    <!--音乐 END-->
+    @*<script>
+            //宇宙特效
+            "use strict";
+            var canvas = document.getElementById('canvas'),
+                ctx = canvas.getContext('2d'),
+                w = canvas.width = window.innerWidth,
+                h = canvas.height = window.innerHeight,
+
+                hue = 217,
+                stars = [],
+                count = 0,
+                maxStars = 1300;//星星数量
+
+            var canvas2 = document.createElement('canvas'),
+                ctx2 = canvas2.getContext('2d');
+            canvas2.width = 100;
+            canvas2.height = 100;
+            var half = canvas2.width / 2,
+                gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
+            gradient2.addColorStop(0.025, '#CCC');
+            gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+            gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
+            gradient2.addColorStop(1, 'transparent');
+
+            ctx2.fillStyle = gradient2;
+            ctx2.beginPath();
+            ctx2.arc(half, half, half, 0, Math.PI * 2);
+            ctx2.fill();
+
+            // End cache
+
+            function random(min, max) {
+                if (arguments.length < 2) {
+                    max = min;
+                    min = 0;
+                }
+
+                if (min > max) {
+                    var hold = max;
+                    max = min;
+                    min = hold;
+                }
+
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            function maxOrbit(x, y) {
+                var max = Math.max(x, y),
+                    diameter = Math.round(Math.sqrt(max * max + max * max));
+                return diameter / 2;
+                //星星移动范围，值越大范围越小，
+            }
+
+            var Star = function () {
+
+                this.orbitRadius = random(maxOrbit(w, h));
+                this.radius = random(60, this.orbitRadius) / 8;
+                //星星大小
+                this.orbitX = w / 2;
+                this.orbitY = h / 2;
+                this.timePassed = random(0, maxStars);
+                this.speed = random(this.orbitRadius) / 50000;
+                //星星移动速度
+                this.alpha = random(2, 10) / 10;
+
+                count++;
+                stars[count] = this;
+            }
+
+            Star.prototype.draw = function () {
+                var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
+                    y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
+                    twinkle = random(10);
+
+                if (twinkle === 1 && this.alpha > 0) {
+                    this.alpha -= 0.05;
+                } else if (twinkle === 2 && this.alpha < 1) {
+                    this.alpha += 0.05;
+                }
+
+                ctx.globalAlpha = this.alpha;
+                ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+                this.timePassed += this.speed;
+            }
+
+            for (var i = 0; i < maxStars; i++) {
+                new Star();
+            }
+
+            function animation() {
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.globalAlpha = 0.5; //尾巴
+                ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 2)';
+                ctx.fillRect(0, 0, w, h)
+
+                ctx.globalCompositeOperation = 'lighter';
+                for (var i = 1, l = stars.length; i < l; i++) {
+                    stars[i].draw();
+                };
+
+                window.requestAnimationFrame(animation);
+            }
+
+            animation();
+        </script>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+</html>
