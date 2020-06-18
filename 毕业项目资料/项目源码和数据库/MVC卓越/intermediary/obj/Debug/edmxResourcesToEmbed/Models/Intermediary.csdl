@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IntermediaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Addhouse">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="size" Type="Int32" />
+    <Property Name="monthly" Type="Int32" />
+    <Property Name="house" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="style" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="trimstate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="housestate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tenancy" Relationship="Self.FK_tenancy_Addhouse" FromRole="Addhouse" ToRole="tenancy" />
+  </EntityType>
+  <EntityType Name="register">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Grade" Type="Int32" />
+    <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LoginPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="sex" Type="Int32" />
+    <NavigationProperty Name="tenancy" Relationship="Self.FK_tenancy_register" FromRole="register" ToRole="tenancy" />
+  </EntityType>
+  <EntityType Name="tenancy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="aID" Type="Int32" />
+    <Property Name="rgstID" Type="Int32" />
+    <NavigationProperty Name="Addhouse" Relationship="Self.FK_tenancy_Addhouse" FromRole="tenancy" ToRole="Addhouse" />
+    <NavigationProperty Name="register" Relationship="Self.FK_tenancy_register" FromRole="tenancy" ToRole="register" />
+  </EntityType>
+  <Association Name="FK_tenancy_Addhouse">
+    <End Role="Addhouse" Type="Self.Addhouse" Multiplicity="0..1" />
+    <End Role="tenancy" Type="Self.tenancy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Addhouse">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tenancy">
+        <PropertyRef Name="aID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tenancy_register">
+    <End Role="register" Type="Self.register" Multiplicity="0..1" />
+    <End Role="tenancy" Type="Self.tenancy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="register">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tenancy">
+        <PropertyRef Name="rgstID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IntermediaryEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addhouse" EntityType="Self.Addhouse" />
+    <EntitySet Name="register" EntityType="Self.register" />
+    <EntitySet Name="tenancy" EntityType="Self.tenancy" />
+    <AssociationSet Name="FK_tenancy_Addhouse" Association="Self.FK_tenancy_Addhouse">
+      <End Role="Addhouse" EntitySet="Addhouse" />
+      <End Role="tenancy" EntitySet="tenancy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tenancy_register" Association="Self.FK_tenancy_register">
+      <End Role="register" EntitySet="register" />
+      <End Role="tenancy" EntitySet="tenancy" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

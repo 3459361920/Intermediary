@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IntermediaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Addhouse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="size" Type="int" />
+          <Property Name="monthly" Type="int" />
+          <Property Name="house" Type="nvarchar" MaxLength="50" />
+          <Property Name="style" Type="nvarchar" MaxLength="50" />
+          <Property Name="trimstate" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="purpose" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="housestate" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Grade" Type="int" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LoginPwd" Type="nvarchar" MaxLength="20" />
+          <Property Name="sex" Type="int" />
+        </EntityType>
+        <EntityType Name="tenancy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aID" Type="int" />
+          <Property Name="rgstID" Type="int" />
+        </EntityType>
+        <Association Name="FK_tenancy_Addhouse">
+          <End Role="Addhouse" Type="Self.Addhouse" Multiplicity="0..1" />
+          <End Role="tenancy" Type="Self.tenancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addhouse">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tenancy">
+              <PropertyRef Name="aID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tenancy_register">
+          <End Role="register" Type="Self.register" Multiplicity="0..1" />
+          <End Role="tenancy" Type="Self.tenancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="register">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tenancy">
+              <PropertyRef Name="rgstID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IntermediaryModelStoreContainer">
+          <EntitySet Name="Addhouse" EntityType="Self.Addhouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="register" EntityType="Self.register" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tenancy" EntityType="Self.tenancy" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tenancy_Addhouse" Association="Self.FK_tenancy_Addhouse">
+            <End Role="Addhouse" EntitySet="Addhouse" />
+            <End Role="tenancy" EntitySet="tenancy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tenancy_register" Association="Self.FK_tenancy_register">
+            <End Role="register" EntitySet="register" />
+            <End Role="tenancy" EntitySet="tenancy" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IntermediaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Addhouse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="size" Type="Int32" />
+          <Property Name="monthly" Type="Int32" />
+          <Property Name="house" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="style" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="trimstate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="housestate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tenancy" Relationship="Self.FK_tenancy_Addhouse" FromRole="Addhouse" ToRole="tenancy" />
+        </EntityType>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="Int32" />
+          <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LoginPwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sex" Type="Int32" />
+          <NavigationProperty Name="tenancy" Relationship="Self.FK_tenancy_register" FromRole="register" ToRole="tenancy" />
+        </EntityType>
+        <EntityType Name="tenancy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aID" Type="Int32" />
+          <Property Name="rgstID" Type="Int32" />
+          <NavigationProperty Name="Addhouse" Relationship="Self.FK_tenancy_Addhouse" FromRole="tenancy" ToRole="Addhouse" />
+          <NavigationProperty Name="register" Relationship="Self.FK_tenancy_register" FromRole="tenancy" ToRole="register" />
+        </EntityType>
+        <Association Name="FK_tenancy_Addhouse">
+          <End Role="Addhouse" Type="Self.Addhouse" Multiplicity="0..1" />
+          <End Role="tenancy" Type="Self.tenancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addhouse">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tenancy">
+              <PropertyRef Name="aID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tenancy_register">
+          <End Role="register" Type="Self.register" Multiplicity="0..1" />
+          <End Role="tenancy" Type="Self.tenancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="register">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tenancy">
+              <PropertyRef Name="rgstID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IntermediaryEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addhouse" EntityType="Self.Addhouse" />
+          <EntitySet Name="register" EntityType="Self.register" />
+          <EntitySet Name="tenancy" EntityType="Self.tenancy" />
+          <AssociationSet Name="FK_tenancy_Addhouse" Association="Self.FK_tenancy_Addhouse">
+            <End Role="Addhouse" EntitySet="Addhouse" />
+            <End Role="tenancy" EntitySet="tenancy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tenancy_register" Association="Self.FK_tenancy_register">
+            <End Role="register" EntitySet="register" />
+            <End Role="tenancy" EntitySet="tenancy" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IntermediaryModelStoreContainer" CdmEntityContainer="IntermediaryEntities1">
+          <EntitySetMapping Name="Addhouse">
+            <EntityTypeMapping TypeName="IntermediaryModel.Addhouse">
+              <MappingFragment StoreEntitySet="Addhouse">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="monthly" ColumnName="monthly" />
+                <ScalarProperty Name="house" ColumnName="house" />
+                <ScalarProperty Name="style" ColumnName="style" />
+                <ScalarProperty Name="trimstate" ColumnName="trimstate" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="purpose" ColumnName="purpose" />
+                <ScalarProperty Name="housestate" ColumnName="housestate" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="register">
+            <EntityTypeMapping TypeName="IntermediaryModel.register">
+              <MappingFragment StoreEntitySet="register">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tenancy">
+            <EntityTypeMapping TypeName="IntermediaryModel.tenancy">
+              <MappingFragment StoreEntitySet="tenancy">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="aID" ColumnName="aID" />
+                <ScalarProperty Name="rgstID" ColumnName="rgstID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

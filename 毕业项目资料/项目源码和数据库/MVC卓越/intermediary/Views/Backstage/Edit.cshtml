@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutBacks.cshtml";
+}
+
+@{
+    var house = ViewBag.Edit as intermediary.Models.Addhouse;
+}
+<script>
+    function cz() {
+        $("input:lt(2)").val("");
+        alert();
+        $("select").val("1");
+    }
+</script>
+<style>
+    .adddiv {
+        margin-left: 100px;
+    }
+</style>
+<div class="adddiv">
+    <div>
+        <form action="Edit" method="post">
+            <input type="hidden" name="ID" value="@house.ID" />
+            <div>
+                <label>房主：</label><input name="Name" class="form-control" type="text" value="@house.Name" />
+            </div>
+            <div>
+                <label>联系电话：</label><input name="Phone" class="form-control" type="text" value="@house.Phone" />
+            </div>
+            <div>
+                <label>面积：</label><input name="size" class="form-control" type="text" value="@house.size" /><label>平方</label>
+            </div>
+            <div>
+                <label>月租：</label><input name="monthly" class="form-control" type="text" value="@house.monthly" /><label>元</label>
+            </div>
+            <div>
+                <label>房屋种类：</label>
+                <select name="house" class="form-control">
+                    @if (house.house == "平房")
+                    {
+                        <option value="平房" selected="selected">平房</option>
+                    }
+                    else
+                    {
+                        <option value="平房">平房</option>
+
+                    }
+                    @if (house.house == "楼房")
+                    {
+                        <option value="楼房" selected="selected">楼房</option>
+                    }
+                    else
+                    {
+                        <option value="楼房">楼房</option>
+
+                    }
+                    @if (house.house == "独栋")
+                    {
+                        <option value="独栋" selected="selected">独栋</option>
+                    }
+                    else
+                    {
+                        <option value="独栋">独栋</option>
+
+                    }
+                    @if (true)
+                    {
+                        <option value="其他" selected="selected">其他</option>
+
+                    }
+                    else
+                    {
+                        <option value="其他">其他</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label>户型：</label>
+                <select name="style" class="form-control">
+                    @if (house.style == "一厅一室")
+                    {
+                        <option value="一厅一室" selected="selected">一厅一室</option>
+                    }
+                    else
+                    {
+                        <option value="一厅一室">一厅一室</option>
+
+                    }
+                    @if (house.style == "二厅一室")
+                    {
+                        <option value="二厅一室" selected="selected">二厅一室</option>
+                    }
+                    else
+                    {
+                        <option value="二厅一室">二厅一室</option>
+
+                    }
+                    @if (house.style == "三厅一室")
+                    {
+                        <option value="三厅一室" selected="selected">三厅一室</option>
+                    }
+                    else
+                    {
+                        <option value="三厅一室">三厅一室</option>
+
+                    }
+                    @if (house.style == "三室两厅")
+                    {
+                        <option value="三室两厅" selected="selected">三室两厅</option>
+
+                    }
+                    else
+                    {
+                        <option value="三室两厅">三室两厅</option>
+                    }
+                    @if (house.style == "豪华别墅")
+                    {
+                        <option value="豪华别墅" selected="selected">豪华别墅</option>
+
+                    }
+                    else
+                    {
+                        <option value="三室两厅">三室两厅</option>
+                    }
+                    <option value="一厅一室">一厅一室</option>
+                    <option value="二厅一室">二厅一室</option>
+                    <option value="三厅一室">三厅一室</option>
+                    <option value="三室两厅">三室两厅</option>
+                    <option value="豪华别墅">豪华别墅</option>
+                </select>
+            </div>
+            <div>
+                <label>装修情况：</label>
+                <select name="trimstate" class="form-control">
+                    @if (house.house == "低档装修")
+                    {
+                        <option value="低档装修" selected="selected">低档装修</option>
+                    }
+                    else
+                    {
+                        <option value="低档装修">低档装修</option>
+
+                    }
+                    @if (house.house == "中档装修")
+                    {
+                        <option value="中档装修" selected="selected">中档装修</option>
+                    }
+                    else
+                    {
+                        <option value="中档装修">中档装修</option>
+
+                    }
+                    @if (house.house == "独栋")
+                    {
+                        <option value="高档装修" selected="selected">高档装修</option>
+                    }
+                    else
+                    {
+                        <option value="高档装修">高档装修</option>
+
+                    }
+                </select>
+            </div>
+            <div>
+                <label>地址：</label><input name="Address" class="form-control" type="text" value="@house.address" />
+            </div>
+            <div>
+                <label>状态：</label>
+                <select name="housestate" class="form-control">
+                    @if (house.housestate == "未完成")
+                    {
+                        <option value="未完成" selected="selected">未完成</option>
+                    }
+                    else
+                    {
+                        <option value="未完成">未完成</option>
+
+                    }
+                    @if (house.house == "已完成")
+                    {
+                        <option value="已完成" selected="selected">已完成</option>
+                    }
+                    else
+                    {
+                        <option value="已完成">已完成</option>
+
+                    }
+                </select>
+            </div>
+            <input type="hidden" name="purpose" value="单租" />
+            <input class="btn btn-info" type="submit" value="保存" /><input class="btn btn-info button" onclick="cz()" type="button" value="重置" />
+        </form>
+    </div>
+</div>
+

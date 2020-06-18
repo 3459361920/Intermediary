@@ -3,32 +3,44 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutBacks.cshtml";
 }
-<style>
-    .div{
-        border:1px solid red;
-        width:100px;
-        height:30px;
-    }
-    .div ul{
-        list-style-type:none;
-    }
-</style>
-@section scripts{
-    <script type="text/javascript">
-        $(".div").click(function () {
-            $(".div ul").slideToggle(2000);
-        });
+    <div>
+            <table class="table">
+                <tr class="tr">
+                    <th class="th1">房主</th>
+                    <th class="th2">联系电话</th>
+                    <th class="th3">面积</th>
+                    <th class="th4">月租</th>
+                    <th class="th5">房屋类别</th>
+                    <th class="th6">房屋样式</th>
+                    <th class="th7">装修档次</th>
+                    <th class="th8">地址</th>
+                    <th class="th9">用途</th>
+                    <th class="th0">状态</th>
+                    <th>操作</th>
+                </tr>
+            </table>
+        <div style="overflow:scroll;height:700px;">
+            <table class="table table-hover .thead-light 500">
 
-    </script>
-    }
- 
-
-<div class="div">
-    展开
-    <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-    </ul>
-</div>
-
+                @foreach (var item in ViewBag.whole as List<intermediary.Models.Addhouse>)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Phone</td>
+                        <td>@item.size</td>
+                        <td>@item.monthly</td>
+                        <td>@item.house</td>
+                        <td>@item.style</td>
+                        <td>@item.trimstate</td>
+                        <td>@item.address</td>
+                        <td>@item.purpose</td>
+                        <td>@item.housestate</td>
+                        <td>
+                        <a href="Edit/@item.ID" class="btn btn-info">编辑</a>
+                        <a href="Delete/@item.ID" onclick="return confirm('你确认删除吗！')" class="btn btn-danger">删除</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>

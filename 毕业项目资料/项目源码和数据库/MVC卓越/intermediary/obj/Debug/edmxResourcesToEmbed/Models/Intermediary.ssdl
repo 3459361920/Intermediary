@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IntermediaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Addhouse">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="size" Type="int" />
+    <Property Name="monthly" Type="int" />
+    <Property Name="house" Type="nvarchar" MaxLength="50" />
+    <Property Name="style" Type="nvarchar" MaxLength="50" />
+    <Property Name="trimstate" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="50" />
+    <Property Name="purpose" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="housestate" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="register">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Grade" Type="int" />
+    <Property Name="LoginName" Type="nvarchar" MaxLength="20" />
+    <Property Name="LoginPwd" Type="nvarchar" MaxLength="20" />
+    <Property Name="sex" Type="int" />
+  </EntityType>
+  <EntityType Name="tenancy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aID" Type="int" />
+    <Property Name="rgstID" Type="int" />
+  </EntityType>
+  <Association Name="FK_tenancy_Addhouse">
+    <End Role="Addhouse" Type="Self.Addhouse" Multiplicity="0..1" />
+    <End Role="tenancy" Type="Self.tenancy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Addhouse">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tenancy">
+        <PropertyRef Name="aID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tenancy_register">
+    <End Role="register" Type="Self.register" Multiplicity="0..1" />
+    <End Role="tenancy" Type="Self.tenancy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="register">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tenancy">
+        <PropertyRef Name="rgstID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IntermediaryModelStoreContainer">
+    <EntitySet Name="Addhouse" EntityType="Self.Addhouse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="register" EntityType="Self.register" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tenancy" EntityType="Self.tenancy" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tenancy_Addhouse" Association="Self.FK_tenancy_Addhouse">
+      <End Role="Addhouse" EntitySet="Addhouse" />
+      <End Role="tenancy" EntitySet="tenancy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tenancy_register" Association="Self.FK_tenancy_register">
+      <End Role="register" EntitySet="register" />
+      <End Role="tenancy" EntitySet="tenancy" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

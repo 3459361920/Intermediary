@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "AddHouse";
+    Layout = "~/Views/Shared/_LayoutBacks.cshtml";
+}<script>
+    function cz() {
+        $("input:lt(2)").val("");
+        alert();
+        $("select").val("1");
+    }
+</script>
+<style>
+    .adddiv{
+        margin-left:100px;
+    }
+</style>
+
+    <div class="adddiv">
+        <div>
+            <form action="Addhouse" method="post">
+                <div>
+                    <label>房主：</label><input name="Name" class="form-control" type="text" />
+                </div>
+                <div>
+                    <label>联系电话：</label><input name="Phone" class="form-control" type="text" />
+                </div>
+                <div>
+                    <label>面积：</label><input name="size" class="form-control" type="text" /><label>平方</label>
+                </div>
+                <div>
+                    <label>月租：</label><input name="monthly" class="form-control" type="text" /><label>元</label>
+                </div>
+                <div>
+                    <label>房屋种类：</label>
+                    <select name="house" class="form-control">
+                        <option value="1">--请选择--</option>
+                        <option value="平房">平房</option>
+                        <option value="楼房">楼房</option>
+                        <option value="独栋">独栋</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <div>
+                    <label>户型：</label>
+                    <select name="style" class="form-control">
+                        <option value="1">--请选择--</option>
+                        <option value="一厅一室">一厅一室</option>
+                        <option value="二厅一室">二厅一室</option>
+                        <option value="三厅一室">三厅一室</option>
+                        <option value="三室两厅">三室两厅</option>
+                        <option value="豪华别墅">豪华别墅</option>
+                    </select>
+                </div>
+                <div>
+                    <label>装修情况：</label>
+                    <select name="trimstate" class="form-control">
+                        <option value="1">--请选择--</option>
+                        <option value="低档装修">低档装修</option>
+                        <option value="中档装修">中档装修</option>
+                        <option value="高档装修">高档装修</option>
+                    </select>
+                </div>
+                <div>
+                    <label>地址：</label><input name="Address" class="form-control" type="text" />
+                </div>
+                <input type="hidden" name="purpose" value="单租"/>
+                <input class="btn btn-info" type="submit" value="保存" /><input class="btn btn-info button" onclick="cz()" type="button" value="重置" />
+            </form>
+        </div>
+    </div>
+

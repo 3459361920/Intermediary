@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IntermediaryModelStoreContainer" CdmEntityContainer="IntermediaryEntities1">
+    <EntitySetMapping Name="Addhouse">
+      <EntityTypeMapping TypeName="IntermediaryModel.Addhouse">
+        <MappingFragment StoreEntitySet="Addhouse">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="monthly" ColumnName="monthly" />
+          <ScalarProperty Name="house" ColumnName="house" />
+          <ScalarProperty Name="style" ColumnName="style" />
+          <ScalarProperty Name="trimstate" ColumnName="trimstate" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="purpose" ColumnName="purpose" />
+          <ScalarProperty Name="housestate" ColumnName="housestate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="register">
+      <EntityTypeMapping TypeName="IntermediaryModel.register">
+        <MappingFragment StoreEntitySet="register">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tenancy">
+      <EntityTypeMapping TypeName="IntermediaryModel.tenancy">
+        <MappingFragment StoreEntitySet="tenancy">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="aID" ColumnName="aID" />
+          <ScalarProperty Name="rgstID" ColumnName="rgstID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
